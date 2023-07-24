@@ -5,7 +5,7 @@
         <title>TOP Project: Rock, Paper, Scissors!</title>
     </head>
 
-    <body> <!--I included this body as a reminder of the different combinations and their results when running the script in the console so that I can better compare results. This will be removed later-->
+    <!--<body>I included this body as a reminder of the different combinations and their results when running the script in the console so that I can better compare results. This will be removed later
         <h1>Rock, Paper, Scissors Game</h1>
         <p style="color: orange">If playerSelection = computerSelection, <i>"It's a draw"</i></p>
         <p style="color: limegreen">If playerSelection = "paper" and computerSelection = "rock", <i>"Player wins"</i></p>
@@ -15,69 +15,66 @@
         <p style="color: limegreen">If playerSelection = "scissors" and computerSelection = "paper", <i>"Player wins"</i></p>
         <p style="color: red">If playerSelection = "scissors" and computerSelection = "rock", <i>"Player loses"</i></p>
         
-    </body>
+    </body>-->
 
     <script>
 
-        let result;
+        function game() {
+
+        let playerChoice = prompt("What will you choose?");
+        const playerSelection = playerChoice.toUpperCase();
+
 
         function getComputerChoice() {
+            let word;
             const randomNumber = Math.random(); // Originally I defined this variable in the global scope, but decided to move it inside the local scope to avoid typing "randomNumber" inside the parentheses of "getComputerChoice()"
 
             if (randomNumber <= 0.35) {
-                let result = "rock";
-                return result;
+                let word = "ROCK";
+                return word;
             } else if (randomNumber > 0.35 && randomNumber <= 0.65) {
-                let result = "paper";
-                return result;
+                let word = "PAPER";
+                return word;
             } else if (randomNumber > 0.65) { //originally I did not include this condition and instead simply used "else"; however this allowed other unstated conditions to return "scissors" even when the value was not in the expected range
-                let result = "scissors";
-                return result;
+                let word = "SCISSORS";
+                return word;
             } else {
                 return "ERROR!";
             }
         }
-        
-        //-------------------------------------------------------------
 
-       // function pick(option) {
-       //     return option.toLocaleLowerCase();
-       // }
-        
-        //let option = "PaPEr";
+        const computerSelection = getComputerChoice();
 
-        //let playerSelection = pick(option);
-        
-        //console.log("PLAYER:" + playerSelection);
-
-        //-------------------------------------------------------------
 
         function playRound(playerSelection, computerSelection) {
-            if (playerSelection == "paper" && computerSelection == "rock") {
+            if (playerSelection == "PAPER" && computerSelection == "ROCK") {
                 return "PLAYER WINS!";
-            } else if (playerSelection == "paper" && computerSelection == "scissors") {
+            } else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
                 return "Player loses";
-            } else if (playerSelection == "rock" && computerSelection == "scissors") {
+            } else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
                 return "PLAYER WINS!";
-            } else if (playerSelection == "rock" && computerSelection == "paper") {
+            } else if (playerSelection == "ROCK" && computerSelection == "PAPER") {
                 return "Player loses";
-            } else if (playerSelection == "scissors" && computerSelection == "paper") {
+            } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
                 return "PLAYER WINS!";
-            } else if (playerSelection == "scissors" && computerSelection == "rock") {
-                return "Player loses"
-            } else {
+            } else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
+                return "Player loses";
+            } else if (playerSelection == computerSelection) {
                 return "It's a draw";
+            } else {
+                return "ERROR!"
             }
         }
-        const playerSelection = "rock";
-        const computerSelection = getComputerChoice();
-        console.log("computer function:" + getComputerChoice());
-        console.log("PLAYER:" + " " + playerSelection);
-        console.log("COMPUTER:" + " " + computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
 
-        //----------------------------------------------------------
+        const result = playRound(playerSelection, computerSelection);
 
+        return "Player has selected" + " " +playerSelection + " and Computer has selected" + " " + computerSelection + "." + " " + result;
+
+        }
+
+        console.log(game());
+
+        
 
     </script>
 </html>

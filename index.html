@@ -7,65 +7,100 @@
 
     <script>
 
-        function game() {
+        let playerScore = 0;
+        let computerScore = 0;
+        
+        let playerChoice = prompt("ROCK, PAPER, SCISSORS ---which do you choose?");
+        const playerSelection = playerChoice.toUpperCase();
+        const computerSelection = getComputerChoice();
+        let PS = "Player selected " + playerSelection + ". ";
+        let CS = "Computer selected " + computerSelection + ". ";
+        const result = playRound(playerSelection, computerSelection);
+        const tally = recordScore();
+        let score = "Score: " + tally;
 
-            let playerChoice = prompt("What will you choose?");
-            
-
-
-            function getComputerChoice() {
-                let word;
-                const randomNumber = Math.random(); // Originally I defined this variable in the global scope, but decided to move it inside the local scope to avoid typing "randomNumber" inside the parentheses of "getComputerChoice()"
-
-                if (randomNumber <= 0.35) {
-                    let word = "ROCK";
-                    return word;
-                } else if (randomNumber > 0.35 && randomNumber <= 0.65) {
-                    let word = "PAPER";
-                    return word;
-                } else if (randomNumber > 0.65) { //originally I did not include this condition and instead simply used "else"; however this allowed other unstated conditions to return "scissors" even when the value was not in the expected range
-                    let word = "SCISSORS";
-                    return word;
-                } else {
-                    return "ERROR!";
+        function game(numberRounds) {
+            for(let i = 1; i <= 5; i++) {
+                
+                const phrase = PS + CS + result + score;
+                console.log(phrase);
+                recordScore(results, 5);
+                if (result !== 0) {
+                    i--;
                 }
-            }
-            
+            } while (i > 0);
 
-
-            function playRound(playerSelection, computerSelection) {
-                if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-                    return "PLAYER WINS!";
-                } else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
-                    return "Player loses";
-                } else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-                    return "PLAYER WINS!";
-                } else if (playerSelection == "ROCK" && computerSelection == "PAPER") {
-                    return "Player loses";
-                } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-                    return "PLAYER WINS!";
-                } else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
-                    return "Player loses";
-                } else if (playerSelection == computerSelection) {
-                    return "It's a draw";
-                } else {
-                    return "ERROR!"
-                }
+            if (playerScore > computerScore) {
+                alert("The player has" + playerScore + " points while computer has " + computerScore + "points. So PLAYER WINS!");
+            } else {
+                alert("The computer has " + computerScore + " points while the player has " + playerScore + "points. So computer wins!");
             }
 
-            const playerSelection = playerChoice.toUpperCase();
-            const computerSelection = getComputerChoice();
-            const result = playRound(playerSelection, computerSelection);
-
-            const PS = "Player has selected " + playerSelection;
-            const CP = "Computer has selected " + computerSelection;
-
-            return [PS, CP, result];
-
+            eraseScore();
         }
 
-        console.log(game());
+        function getComputerChoice() {
+            let word;
+            const randomNumber = Math.random(); // Originally I defined this variable in the global scope, but decided to move it inside the local scope to avoid typing "randomNumber" inside the parentheses of "getComputerChoice()"
 
+            if (randomNumber <= 0.35) {
+                let word = "ROCK";
+                return word;
+            } else if (randomNumber > 0.35 && randomNumber <= 0.65) {
+                let word = "PAPER";
+                return word;
+            } else if (randomNumber > 0.65) { //originally I did not include this condition and instead simply used "else"; however this allowed other unstated conditions to return "scissors" even when the value was not in the expected range
+                let word = "SCISSORS";
+                return word;
+            } else {
+                return "ERROR!";
+            }
+        }
+
+
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == "PAPER" && computerSelection == "ROCK") {
+                return "PLAYER WINS!";
+            } else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
+                return "Player loses";
+            } else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
+                return "PLAYER WINS!";
+            } else if (playerSelection == "ROCK" && computerSelection == "PAPER") {
+                return "Player loses";
+            } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
+                return "PLAYER WINS!";
+            } else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
+                return "Player loses";
+            } else if (playerSelection == computerSelection) {
+                return "It's a draw";
+            } else {
+                return "ERROR: That's not how you play!"
+            }
+        }
+
+        
+        function recordScore(result, points) {
+            if (result === "PLAYER WINS!") {
+                playerScore += points;
+            }
+            if (result === "Player loses") {
+                computerScore += points;
+            }
+            if (result === "It's a draw") {
+                computerScore += 0;
+                playerScore += 0;
+            }
+        }
+
+        function eraseScore() {
+            playerScore = 0;
+            computerScore = 0;
+        }
+
+
+        
+
+        console.log(game());
         
 
     </script>

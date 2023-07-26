@@ -13,15 +13,17 @@
         let computerScore = 0;
 
         function game() {
-            for(let i = 1; i <= 5; i++) {
-
+            for(let i = 1; i <= 5; i++) { // This keeps the game running for five rounds
+            
+            // Setup for stating the round being played
             function Round() {
                 return i;
             }
             alert("Playing ROUND: " + i);
 
             console.log("Round: " + Round());
-            // Setting up the player's selection of rock, paper, scissors------------------------------------------------------
+
+            // Setup for the player's selection of rock, paper, scissors------------------------------------------------------
         
             let playerChoice;
         
@@ -41,7 +43,7 @@
             console.log("playerSelection: " + playerSelection);
 
         
-            // Setting up the computer's selection of rock, paper, scissors------------------------------------------------------
+            // Setup for the computer's selection of rock, paper, scissors------------------------------------------------------
 
             const computerSelection = getComputerChoice();
 
@@ -66,7 +68,7 @@
 
             console.log("computerSelection: " + computerSelection);
 
-            // Setup for comparing selections to dermine the outcome of the round------------------------------------------------
+            // Setup for comparing selections to determine the outcome of the round------------------------------------------------
 
             const result = playRound(playerSelection, computerSelection);
 
@@ -84,15 +86,47 @@
                     (playerSelection === "paper" && computerSelection === "scissors")) {
                         return "Computer wins the round!";
                     } else {
-                    return "It's a draw!";
+                    return "ERROR: wrong comparison result"; // Since I've already defined a tie condition, I replaced this with an error message in case there is an error in the code somewhere
                 }
             }  
         
             alert("This round's result is: " + result);
 
             console.log(result);
+            
+            // Setup for the score tracker----------------------------------------------------------------------
+
+            function recordScore() {
+                if (result === "Player wins the round!") {
+                    return playerScore++;
+                } else if (result === "Computer wins the round!") {
+                    return computerScore++;
+                } else {
+                    alert("No round winner");
+                }
             }
-        }
+            alert("Player: " + playerScore + " | Computer: " + computerScore);
+
+            console.log("playerScore: " + playerScore + ", computerScore: " + computerScore);
+
+            } // End of the for loop (five rounds)
+
+            // I needed to move the winner() function, alert(winner()), and console.log(winner()) outside the loop so that it only runs at the end of all five rounds
+            function winner() {
+                if (playerScore > computerScore) {
+                    return "CONGRATULATIONS! PLAYER WINS!";
+                } else if (playerScore < computerScore) {
+                    return "Computer wins the game.";
+                } else {
+                    return "Sorry, there is no winner.";
+                }
+            } 
+            
+            alert(winner());
+
+            console.log(winner());
+
+        } // End of the game() function
 
         console.log(game());
     

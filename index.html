@@ -3,89 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <title>TOP Project: Rock, Paper, Scissors!</title>
-        <script src="rock-paper-scissors.js"></script>
-        <style>
-            body {
-                margin: 0;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-            }
-
-            header {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: aqua;
-                background: linear-gradient(royalblue, navy);
-                height: 200px;
-                font-size: 72px;
-                text-align: center;
-                font-family: 'Chilanka';
-                font-weight: 1000;
-                
-            }
-
-            section {
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: space-around;
-                align-items: stretch;
-                flex: 1;
-                background: navy;
-            }
-
-            article {
-                background: navy;
-                color: white;
-                padding-top: 20px;
-                text-align: center;
-                font-size: 48px;
-                font-family: 'Yrsa';
-                font-weight: lighter;
-                font-style: italic;
-            }
-            
-            h2 {
-                margin: 0;
-                padding-top: 100px;
-                display: flex;
-                justify-content: center;
-                color: aqua;
-            }
-
-            .player,
-            .computer {
-                flex: 1;
-                font-size: 48px;
-            }
-
-            .player {
-                font-family: 'Purisa';
-                margin-top: -5px;
-            }
-
-            .computer {
-                font-family: 'Ubuntu';
-            }
-
-            .vs {
-                font-family:'Courier New', Courier, monospace;
-                font-size: 24px;
-                padding-top: 125px;
-            }
-
-        </style>
+        <link rel="stylesheet" href="rps.css">
+        <script src="rock-paper-scissors.js" defer></script>
+        
+        
     </head>
 
     <body>
         <header>Rock, Paper, Scissors:<br>The Game</header>
-        <article>[QUESTION]</article>
-        <section>
-            <h2 class="player">Player</h2>
-            <h2 class="vs">vs</h2>
-            <h2 class="computer">Computer</h2>
+        <article>
+            <p>Opponents, select your move:</p>
+            <p class="choices">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
+            </p>
+        </article>
+        <section class="main">
+            <h2 id="player"></h2>
+            <h2 id="computer"></h2>
+        </section>
+        <section class="results">
+            <h2 id="win"></h2>
         </section>
     </body>
 </html>

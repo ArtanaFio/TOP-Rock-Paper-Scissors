@@ -39,17 +39,20 @@ article {
     color: aqua;
 }
 
+.results {
+    background: navy;
+    color: navy;
+    text-align: center;
+    padding: 50px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
 h2 {
     margin: 0;
     color: aqua;
     font-size: 48px;
     text-align: center;
-}
-
-h4 {
-    padding: 10px;
-    border: 2px dotted yellow;
-    width: 300px;
 }
 
 #player {

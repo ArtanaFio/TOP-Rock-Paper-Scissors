@@ -54,24 +54,47 @@ function game() {
             const playerSelection = getPlayerChoice(event);
             player.textContent = "Player chose " + playerSelection;
             computer.textContent = "Computer selected " + computerSelection;
+            win.style = 'background: aqua; border: 10px double navy';
 
-            if (playerSelection === computerSelection) {
-                win.textContent = "It's a draw";
-            } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
-                win.textContent = "Player wins!";
-            } else {
-                win.textContent = "Computer wins!";
+            function determineWinner() {
+                if (playerSelection === computerSelection) {
+                    win.textContent = "IT'S A DRAW -- NO WINNER";
+                } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
+                    win.textContent = "PLAYER WINS!";
+                } else {
+                    win.textContent = "COMPUTER WINS!";
+                }
             }
+
+            determineWinner();
+
+            function startAgain() {
+                const playAgain = document.createElement('button');
+                playAgain.textContent = 'Play Again';
+                results.appendChild(playAgain);
+
+                playAgain.addEventListener('click', (event) => {
+                    // Once you're able to clear the 'Play Again' button for each round, commit the success
+                    enableAllButtons();
+
+                    player.textContent = '';
+                    computer.textContent = '';
+                    win.textContent = '';
+                    win.style = 'background: navy; border: none';
+                    playAgain.remove();
+                })
+            }
+
+            startAgain();
+            
         });
     }); 
-
-    //-----------------------Round Winner-----------------------
 
     
 
     //-----------------------Disable Buttons after click-----------------------
     
-    function disableAllButtons () {
+    function disableAllButtons() {
         rock.disabled = true;
         paper.disabled = true;
         scissors.disabled = true;
@@ -88,6 +111,12 @@ function game() {
     scissors.addEventListener('click', () => {
         disableAllButtons();
     });
+
+    function enableAllButtons() {
+        rock.disabled = false;
+        paper.disabled = false;
+        scissors.disabled = false;
+    }
 
     main.appendChild(player);
     main.appendChild(computer);

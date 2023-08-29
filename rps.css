@@ -19,6 +19,7 @@ header {
 }
 
 article {
+    margin-top: 0;
     background: Navy;
     color: white;
     padding-top: 0;
@@ -28,7 +29,6 @@ article {
     font-family: 'Courier New', Courier, monospace;
     font-size: 36px;
     font-style: italic;
-    /*border: 3px dashed magenta;*/
 }
 
 .main {
@@ -41,17 +41,31 @@ article {
 
 .results {
     background: navy;
-    color: navy;
     text-align: center;
     padding: 50px;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: bold;
+}
+
+#score {
+    color: white;
+}
+#win {
+    color: navy;
+}
+
+#roundNumber {
+    color: white;
+    text-align: center;
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 h2 {
     margin: 0;
     color: aqua;
-    font-size: 48px;
+    font-size: 36px;
     text-align: center;
 }
 
@@ -86,7 +100,20 @@ button {
     border-left: 3px solid aqua;
     border-bottom: 3px solid royalblue;
     border-right: 3px solid royalblue;
-    
+}
+
+button:active {
+    border-top: 3px solid aqua;
+    border-left: 3px solid aqua;
+    border-bottom: 3px solid royalblue;
+    border-right: 3px solid royalblue;
+}
+
+button:focus {
+    border-top: 3px solid royalblue;
+    border-left: 3px solid royalblue;
+    border-bottom: 3px solid aqua;
+    border-right: 3px solid aqua;
 }
 
 #rock {

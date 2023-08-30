@@ -11,8 +11,8 @@ header {
     align-items: center;
     color: aqua;
     background: linear-gradient(royalblue, navy);
-    height: 200px;
-    font-size: 72px;
+    height: 175px;
+    font-size: 55px;
     text-align: center;
     font-family: 'Chilanka';
     font-weight: 1000;
@@ -25,18 +25,20 @@ article {
     padding-top: 0;
     display: flex;
     justify-content: center;
-    align-items: first baseline;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 36px;
+    font-size: 28px;
     font-style: italic;
 }
 
 .main {
     flex: 1;
     background: navy;
-    margin: 0;
     padding: 0;
     color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .results {
@@ -47,9 +49,17 @@ article {
     font-weight: bold;
 }
 
+#outcome {
+    color: white;
+    margin-top: 0;
+    font-weight: lighter;
+    font-style: italic;
+}
+
 #score {
     color: white;
 }
+
 #win {
     color: navy;
 }
@@ -71,18 +81,10 @@ h2 {
 
 #player {
     font-family: 'Purisa';
-    margin-top: -5px;
-    margin-bottom: 30px;
 }
 
 #computer {
     font-family: 'Ubuntu';
-}
-
-#outcome {
-    border-top: 5px solid white;
-    margin-top: 30px;
-    padding-top: 30px;
 }
 
 .choices {

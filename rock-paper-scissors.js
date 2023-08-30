@@ -7,6 +7,8 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     let numberRound = 0;
+
+    //math.randomseed(tick()); this might help with the RandomNumber becuase currently it doesn't change
             
     // Setup for the player's selection of rock, paper, scissors------------------------------------------------------
 
@@ -18,24 +20,17 @@ function game() {
     const outcome = document.getElementById('outcome');
     const win = document.getElementById('win');
     const player = document.getElementById('player');
-    const randomNumber = Math.random();
+    
     const computer = document.getElementById('computer');
     const rock = document.getElementById('rock');
     const paper = document.getElementById('paper');
     const scissors = document.getElementById('scissors');
-
-
-    //win.style = 'background: aqua; border: 10px double navy';
-
-
-    
 
         function getPlayerChoice(event) {
             let button = event.target;
             return button.id;
         }   
 
-        
             buttons.forEach((button) => {
                 button.addEventListener('click', (event) => {
                     numberRound++;
@@ -48,6 +43,8 @@ function game() {
                     console.log(player.textContent);
 
                     function getComputerChoice() {
+                        const randomNumber = Math.random();
+                        console.log(randomNumber);
                         let option;
                         if (randomNumber <= 0.35) {
                             let option = "rock";
@@ -63,7 +60,7 @@ function game() {
                         }
                     }
                     const computerSelection = getComputerChoice();
-                    console.log(randomNumber);
+                    
                     computer.textContent = "Computer selected " + computerSelection;
                     console.log(computer.textContent);
         
@@ -113,9 +110,11 @@ function game() {
                     
                     function winner(playerScore, computerScore) {
                         if (playerScore === 5) {
+                            win.style = 'background: aqua; border: 10px double navy';
                             win.textContent = "CONGRATULATIONS! YOU WIN!"
                             disableAllButtons();
                         } else if (computerScore === 5) {
+                            win.style = 'background: aqua; border: 10px double navy';
                             win.textContent = "Sorry, Computer wins";
                             disableAllButtons();
                         }

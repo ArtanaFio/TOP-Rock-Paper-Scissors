@@ -11,8 +11,8 @@ function game() {
     //math.randomseed(tick()); this might help with the RandomNumber becuase currently it doesn't change
             
     // Setup for the player's selection of rock, paper, scissors------------------------------------------------------
-
-    const buttons = document.querySelectorAll('button');
+    const selectMove = document.querySelector('.select-move');
+    const buttons = document.querySelectorAll('.button-choice');
     const roundNumber = document.getElementById('roundNumber');
     const main = document.querySelector('.main');
     const results = document.querySelector('.results');
@@ -26,10 +26,12 @@ function game() {
     const paper = document.getElementById('paper');
     const scissors = document.getElementById('scissors');
 
-        function getPlayerChoice(event) {
-            let button = event.target;
-            return button.id;
-        }   
+    
+
+    function getPlayerChoice(event) {
+        let button = event.target;
+        return button.id;
+    }   
 
             buttons.forEach((button) => {
                 button.addEventListener('click', (event) => {
@@ -37,11 +39,13 @@ function game() {
                     roundNumber.textContent = "Round " + numberRound; 
                     roundNumber.style = 'border-bottom: 5px solid white';
                     console.log(roundNumber.textContent);
+                    
 
                     const playerSelection = getPlayerChoice(event);
                     player.textContent = "Player chose " + playerSelection;
                     console.log(player.textContent);
 
+                    
                     function getComputerChoice() {
                         const randomNumber = Math.random();
                         console.log(randomNumber);
@@ -60,10 +64,10 @@ function game() {
                         }
                     }
                     const computerSelection = getComputerChoice();
-                    
                     computer.textContent = "Computer selected " + computerSelection;
                     console.log(computer.textContent);
         
+
                     const roundScore = roundWinner(playerSelection, computerSelection);
         
                     function roundWinner(playerSelection, computerSelection) {
@@ -78,7 +82,6 @@ function game() {
                         }
                     }
 
-
                     results.style = "border-top: 5px solid white";
                     outcome.textContent = roundScore;
                     console.log(roundScore);
@@ -88,65 +91,85 @@ function game() {
         
                     roundWinner();
                     
-                    function startAgain() {
-                        const playAgain = document.createElement('button');
-                        playAgain.textContent = 'Play Again';
-                        playAgain.style = 'background: royalblue; color: white; width: 250px; margin-top: 20px';
-                        main.appendChild(playAgain);
+
+                    function winner() {
+                        if (playerScore === 5) {
+                            win.style = 'background: aqua; border: 10px double navy';
+                            win.textContent = "CONGRATULATIONS! YOU WIN!";
+                            selectMove.textContent = '';
+                            roundNumber.textContent = '';
+                            roundNumber.style = 'border-bottom: none';
+                            player.textContent = '';
+                            computer.textContent = '';
+                            outcome.textContent = '';
+                            removeAllButtons();
+                        } else if (computerScore === 5) {
+                            win.style = 'background: aqua; border: 10px double navy';
+                            win.textContent = "Sorry, Computer wins";
+                            selectMove.textContent = '';
+                            roundNumber.textContent = '';
+                            roundNumber.style = 'border-bottom: none';
+                            player.textContent = '';
+                            computer.textContent = '';
+                            outcome.textContent = '';
+                            removeAllButtons();
+                        }
+                    }
+        
+                    winner();
+        
+
+                    function startRound() {
+                        const nextRound = document.createElement('button');
+                        nextRound.textContent = 'Start Next Round';
+                        nextRound.style = 'background: royalblue; color: white; width: 350px; margin-top: 20px';
+                        main.appendChild(nextRound);
             
-                        playAgain.addEventListener('click', (event) => {
-                            enableAllButtons();
+                        nextRound.addEventListener('click', (event) => {
+                            enableButtons();
                             roundNumber.textContent = '';
                             roundNumber.style = 'border-bottom: none';
                             player.textContent = '';
                             computer.textContent = '';
                             outcome.textContent = '';
                             win.textContent = '';
-                            playAgain.remove();
+                            nextRound.remove();
                         })
                     }
             
-                    startAgain();
-                    
-                    function winner(playerScore, computerScore) {
-                        if (playerScore === 5) {
-                            win.style = 'background: aqua; border: 10px double navy';
-                            win.textContent = "CONGRATULATIONS! YOU WIN!"
-                            disableAllButtons();
-                        } else if (computerScore === 5) {
-                            win.style = 'background: aqua; border: 10px double navy';
-                            win.textContent = "Sorry, Computer wins";
-                            disableAllButtons();
-                        }
-                    }
+                    startRound();
 
-                    winner();
+                    function removeAllButtons() {
+                        rock.remove();
+                        paper.remove();
+                        scissors.remove();
+                        nextRound.remove();
+                    }
                     
                 });
             }); 
         
-
         //-----------------------Disable Buttons after click-----------------------
         
-        function disableAllButtons() {
+        function disableButtons() {
             rock.disabled = true;
             paper.disabled = true;
             scissors.disabled = true;
         }
 
         rock.addEventListener('click', () => {
-            disableAllButtons();
+            disableButtons();
         });
 
         paper.addEventListener('click', () => {
-            disableAllButtons();
+            disableButtons();
         });
 
         scissors.addEventListener('click', () => {
-            disableAllButtons();
+            disableButtons();
         });
 
-        function enableAllButtons() {
+        function enableButtons() {
             rock.disabled = false;
             paper.disabled = false;
             scissors.disabled = false;

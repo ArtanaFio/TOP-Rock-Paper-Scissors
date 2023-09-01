@@ -11,7 +11,9 @@ function game() {
     //math.randomseed(tick()); this might help with the RandomNumber becuase currently it doesn't change
             
     // Setup for the player's selection of rock, paper, scissors------------------------------------------------------
+    const article = document.querySelector('article');
     const selectMove = document.querySelector('.select-move');
+    const choices = document.querySelector('.choices');
     const buttons = document.querySelectorAll('.button-choice');
     const roundNumber = document.getElementById('roundNumber');
     const main = document.querySelector('.main');
@@ -44,7 +46,7 @@ function game() {
                     const playerSelection = getPlayerChoice(event);
                     player.textContent = "Player chose " + playerSelection;
                     console.log(player.textContent);
-
+                    removeOptions();
                     
                     function getComputerChoice() {
                         const randomNumber = Math.random();
@@ -75,9 +77,13 @@ function game() {
                             return "No points";
                         } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
                             playerScore++;
+                            player.style = "font-weight: bolder";
+                            computer.style = "font-weight: lighter; opacity: 25%";
                             return "Player wins the point";
                         } else {
                             computerScore++;
+                            player.style = "font-weight: lighter; opacity: 25%";
+                            computer.style = "font-weight: bolder";
                             return "Computer wins the point";
                         }
                     }
@@ -92,31 +98,7 @@ function game() {
                     roundWinner();
                     
 
-                    function winner() {
-                        if (playerScore === 5) {
-                            win.style = 'background: aqua; border: 10px double navy';
-                            win.textContent = "CONGRATULATIONS! YOU WIN!";
-                            selectMove.textContent = '';
-                            roundNumber.textContent = '';
-                            roundNumber.style = 'border-bottom: none';
-                            player.textContent = '';
-                            computer.textContent = '';
-                            outcome.textContent = '';
-                            removeAllButtons();
-                        } else if (computerScore === 5) {
-                            win.style = 'background: aqua; border: 10px double navy';
-                            win.textContent = "Sorry, Computer wins";
-                            selectMove.textContent = '';
-                            roundNumber.textContent = '';
-                            roundNumber.style = 'border-bottom: none';
-                            player.textContent = '';
-                            computer.textContent = '';
-                            outcome.textContent = '';
-                            removeAllButtons();
-                        }
-                    }
-        
-                    winner();
+                    
         
 
                     function startRound() {
@@ -125,8 +107,49 @@ function game() {
                         nextRound.style = 'background: royalblue; color: white; width: 350px; margin-top: 20px';
                         main.appendChild(nextRound);
             
+                        function removeAllButtons() {
+                            rock.remove();
+                            paper.remove();
+                            scissors.remove();
+                            nextRound.remove();
+                        }
+
+                        function winner() {
+                            if (playerScore === 5) {
+                                win.textContent = "CONGRATULATIONS! YOU WIN!";
+                                win.style = 'background: aqua; border: 10px double navy; font-size: 72px';
+                                selectMove.textContent = '';
+                                roundNumber.textContent = '';
+                                roundNumber.style = 'border-bottom: none';
+                                player.textContent = '';
+                                computer.textContent = '';
+                                outcome.textContent = '';
+                                removeAllButtons();
+                                const playAgain = document.createElement('button');
+                                playAgain.textContent = 'Play again?';
+                                playAgain.style = 'background-color: aqua; color: navy; margin-top: 100px';
+                                article.appendChild(playAgain);
+                            } else if (computerScore === 5) {
+                                win.textContent = "Sorry, Computer wins";
+                                win.style = 'background: aqua; border: 10px double navy; font-size: 72px';
+                                roundNumber.textContent = '';
+                                roundNumber.style = 'border-bottom: none';
+                                player.textContent = '';
+                                computer.textContent = '';
+                                outcome.textContent = '';
+                                selectMove.remove();
+                                removeAllButtons();
+                                const playAgain = document.createElement('button');
+                                playAgain.textContent = 'Play again?';
+                                playAgain.style = 'background-color: aqua; color: navy; margin-top: 100px';
+                                article.appendChild(playAgain);
+                            }
+                        }
+            
+                        winner();
+
                         nextRound.addEventListener('click', (event) => {
-                            enableButtons();
+                            addOptions();
                             roundNumber.textContent = '';
                             roundNumber.style = 'border-bottom: none';
                             player.textContent = '';
@@ -138,50 +161,33 @@ function game() {
                     }
             
                     startRound();
-
-                    function removeAllButtons() {
-                        rock.remove();
-                        paper.remove();
-                        scissors.remove();
-                        nextRound.remove();
-                    }
                     
                 });
             }); 
         
         //-----------------------Disable Buttons after click-----------------------
         
-        function disableButtons() {
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
+        
+
+        function removeOptions() {
+            selectMove.remove();
+            choices.remove();
         }
 
-        rock.addEventListener('click', () => {
-            disableButtons();
-        });
-
-        paper.addEventListener('click', () => {
-            disableButtons();
-        });
-
-        scissors.addEventListener('click', () => {
-            disableButtons();
-        });
-
-        function enableButtons() {
-            rock.disabled = false;
-            paper.disabled = false;
-            scissors.disabled = false;
+        function addOptions() {
+            article.appendChild(selectMove);
+            article.appendChild(choices);
         }
+
+        
 
         
         main.appendChild(player);
         main.appendChild(computer);
         main.appendChild(outcome);
         results.appendChild(score);
-        results.appendChild(win);
-    
+        article.appendChild(win);
+        
 
 }
 game();

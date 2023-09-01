@@ -24,6 +24,8 @@ article {
     color: white;
     padding-top: 0;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: 28px;
@@ -93,25 +95,19 @@ h2 {
     gap: 30px;
 }
 
+.button-choice {
+    width: 200px;
+    height: 250px;
+}
+
 button {
     font-size: 36px;
     border-radius: 10%;
     font-weight: bolder;
-    color: black;
-    border-top: 3px solid aqua;
-    border-left: 3px solid aqua;
-    border-bottom: 3px solid royalblue;
-    border-right: 3px solid royalblue;
+    transition: 0.5s;
 }
 
-button:active {
-    border-top: 3px solid aqua;
-    border-left: 3px solid aqua;
-    border-bottom: 3px solid royalblue;
-    border-right: 3px solid royalblue;
-}
-
-button:focus {
+button:hover {
     border-top: 3px solid royalblue;
     border-left: 3px solid royalblue;
     border-bottom: 3px solid aqua;
@@ -119,13 +115,39 @@ button:focus {
 }
 
 #rock {
-    background: orange;
+    background-color: black;
+    background-image: url("Images/rock.jpg");
+    background-size: cover;
+    color: transparent;
+    
+    
+}
+
+#rock:hover {
+    background-image: none;
+    color: gray;
 }
 
 #paper {
-    background: yellow;
+    background-color: black;
+    background-image: url("Images/paper.jpg");
+    background-size: cover;
+    color: transparent;
+}
+
+#paper:hover {
+    background-image: none;
+    color: antiquewhite;
 }
 
 #scissors {
-    background: red;
+    background-color: black;
+    background-image: url("Images/scissors.jpg");
+    background-size: cover;
+    color: transparent;
+}
+
+#scissors:hover {
+    background-image: none;
+    color: darkslateblue;
 }

@@ -28,7 +28,9 @@ function game() {
     const paper = document.getElementById('paper');
     const scissors = document.getElementById('scissors');
 
-    
+    const playAgain = document.getElementById('playAgain');
+
+    playAgain.remove();
 
     function getPlayerChoice(event) {
         let button = event.target;
@@ -77,15 +79,23 @@ function game() {
                             return "No points";
                         } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
                             playerScore++;
-                            player.style = "font-weight: bolder";
-                            computer.style = "font-weight: lighter; opacity: 25%";
                             return "Player wins the point";
                         } else {
                             computerScore++;
-                            player.style = "font-weight: lighter; opacity: 25%";
-                            computer.style = "font-weight: bolder";
                             return "Computer wins the point";
                         }
+                    }
+
+                    function roundStyle() {
+                        if (roundScore === "No points") {
+                            player.style = "font-weight: normal; opacity: 100%";
+                            computer.style = "font-weight: normal; opacity: 100%";
+                        } else if (roundScore === "Player wins the point") {
+                            player.style = "font-weight: bolder";
+                            computer.style = "font-weight: lighter; opacity: 45%";
+                        } else {
+                            player.style = "font-weight: lighter; opacity: 45%";
+                            computer.style = "font-weight: bolder";}
                     }
 
                     results.style = "border-top: 5px solid white";
@@ -96,6 +106,7 @@ function game() {
                     console.log(score.textContent);
         
                     roundWinner();
+                    roundStyle();
                     
 
                     
@@ -125,7 +136,6 @@ function game() {
                                 computer.textContent = '';
                                 outcome.textContent = '';
                                 removeAllButtons();
-                                const playAgain = document.createElement('button');
                                 playAgain.textContent = 'Play again?';
                                 playAgain.style = 'background-color: aqua; color: navy; margin-top: 100px';
                                 article.appendChild(playAgain);
@@ -139,7 +149,6 @@ function game() {
                                 outcome.textContent = '';
                                 selectMove.remove();
                                 removeAllButtons();
-                                const playAgain = document.createElement('button');
                                 playAgain.textContent = 'Play again?';
                                 playAgain.style = 'background-color: aqua; color: navy; margin-top: 100px';
                                 article.appendChild(playAgain);
@@ -164,6 +173,10 @@ function game() {
                     
                 });
             }); 
+
+            function newGame() {
+
+            }
         
         //-----------------------Disable Buttons after click-----------------------
         

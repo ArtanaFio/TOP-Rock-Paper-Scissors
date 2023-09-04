@@ -98,6 +98,7 @@ function game() {
                     console.log(roundScore);
 
                     score.textContent = "Player: " + playerScore + " | Computer: " + computerScore;
+                    results.appendChild(score);
                     console.log(score.textContent);
         
                     roundWinner();
@@ -121,6 +122,7 @@ function game() {
                             if (playerScore === 5) {
                                 win.textContent = "CONGRATULATIONS! YOU WIN!";
                                 win.style = 'background: aqua; border: 10px double navy; font-size: 72px';
+                                article.appendChild(win);
                                 selectMove.textContent = '';
                                 roundNumber.textContent = '';
                                 roundNumber.style = 'border-bottom: none';
@@ -134,6 +136,7 @@ function game() {
                             } else if (computerScore === 5) {
                                 win.textContent = "Sorry, Computer wins";
                                 win.style = 'background: aqua; border: 10px double navy; font-size: 72px';
+                                article.appendChild(win);
                                 roundNumber.textContent = '';
                                 roundNumber.style = 'border-bottom: none';
                                 player.textContent = '';
@@ -181,7 +184,7 @@ function game() {
                     choices.appendChild(rock);
                     choices.appendChild(paper);
                     choices.appendChild(scissors);
-                });
+                }); // At this point the game works, but the score doesn't appear and "win" doesn't appear when someone wins
             }
             playGameAgain();
     } 

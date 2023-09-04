@@ -1,16 +1,11 @@
 
-
-// Setup for recording the score and playing five rounds---------------------------------------------------
-
 function game() {
 
     let playerScore = 0;
     let computerScore = 0;
     let numberRound = 0;
-
-    //math.randomseed(tick()); this might help with the RandomNumber becuase currently it doesn't change
             
-    // Setup for the player's selection of rock, paper, scissors------------------------------------------------------
+
     const article = document.querySelector('article');
     const selectMove = document.querySelector('.select-move');
     const choices = document.querySelector('.choices');
@@ -22,20 +17,20 @@ function game() {
     const outcome = document.getElementById('outcome');
     const win = document.getElementById('win');
     const player = document.getElementById('player');
-    
     const computer = document.getElementById('computer');
     const rock = document.getElementById('rock');
     const paper = document.getElementById('paper');
     const scissors = document.getElementById('scissors');
-
     const playAgain = document.getElementById('playAgain');
 
-    playAgain.remove();
+    playAgain.remove(); 
 
-    function getPlayerChoice(event) {
-        let button = event.target;
-        return button.id;
-    }   
+    function gameLoop() {
+
+        function getPlayerChoice(event) {
+            let button = event.target;
+            return button.id;
+        }  
 
             buttons.forEach((button) => {
                 button.addEventListener('click', (event) => {
@@ -109,9 +104,6 @@ function game() {
                     roundStyle();
                     
 
-                    
-        
-
                     function startRound() {
                         const nextRound = document.createElement('button');
                         nextRound.textContent = 'Start Next Round';
@@ -172,16 +164,29 @@ function game() {
                     startRound();
                     
                 });
-            }); 
+            });
 
-            function newGame() {
-
+            function playGameAgain() {
+                playAgain.addEventListener('click', () => {
+                    playerScore = 0;
+                    computerScore = 0;
+                    numberRound = 0;
+                    console.log("playerScore: " + playerScore + ", computerScore: " + computerScore + ", numberRound: " + numberRound);
+                    win.remove();
+                    playAgain.remove();
+                    results.style = 'border: none';
+                    score.remove();
+                    article.appendChild(selectMove);
+                    article.appendChild(choices);
+                    choices.appendChild(rock);
+                    choices.appendChild(paper);
+                    choices.appendChild(scissors);
+                });
             }
+            playGameAgain();
+    } 
+    gameLoop();
         
-        //-----------------------Disable Buttons after click-----------------------
-        
-        
-
         function removeOptions() {
             selectMove.remove();
             choices.remove();
@@ -191,9 +196,6 @@ function game() {
             article.appendChild(selectMove);
             article.appendChild(choices);
         }
-
-        
-
         
         main.appendChild(player);
         main.appendChild(computer);

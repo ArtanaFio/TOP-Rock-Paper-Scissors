@@ -10,8 +10,9 @@
     <body>
         <header>Rock, Paper, Scissors:<br>The Game</header>
         <article>
+            <button id="start">START</button>
             <div id="win"></div>
-            <button id="playAgain"></button>
+            <button id="playAgain">PLAY AGAIN</button>
             <p class="select-move">Opponents, select your move:</p>
             <p class="choices">
                 <button class="button-choice" id="rock">Rock</button>
@@ -20,10 +21,16 @@
             </p>
         </article>
         <section class="main">
-            <h1 id="roundNumber"></h1>
-            <h2 id="player"></h2>
-            <h2 id="computer"></h2>
-            <h2 id="outcome"></h2>
+            <div id="flex-opp1">
+                <div class="opponents" id="computer"></div>
+            </div>
+            <div id="flex-opp2">
+                <div class="opponents" id="player"></div>
+            </div>
+            <div id="flex-opp3">
+                <h1 id="roundNumber"></h1>
+                <h2 id="outcome"></h2>
+            </div>
         </section>
         <section class="results">
             <div id="score"></div>

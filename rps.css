@@ -1,8 +1,9 @@
 body {
     margin: 0;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: navy;
 }
 
 header {
@@ -35,20 +36,69 @@ article {
 .main {
     flex: 1;
     background: navy;
-    padding: 0;
     color: aqua;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#flex-opp1 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
     align-items: center;
+}
+
+#flex-opp2 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#flex-opp3 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.opponents {
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+#player {
+    font-family: 'Purisa';
+}
+
+#computer {
+    font-family: 'Ubuntu';
 }
 
 .results {
     background: navy;
-    text-align: center;
-    padding: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     font-size: 40px;
     font-weight: bold;
+    position: fixed;
+    top: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start {
+    margin-top: 200px;
+    font-size: 48px;
+    padding: 10px;
+    background-color: royalblue;
+    color: white;
 }
 
 #outcome {
@@ -81,14 +131,6 @@ h2 {
     text-align: center;
 }
 
-#player {
-    font-family: 'Purisa';
-}
-
-#computer {
-    font-family: 'Ubuntu';
-}
-
 .choices {
     display: flex;
     margin-left: 30px;
@@ -108,10 +150,10 @@ button {
 }
 
 button:hover {
-    border-top: 3px solid royalblue;
-    border-left: 3px solid royalblue;
-    border-bottom: 3px solid aqua;
-    border-right: 3px solid aqua;
+    border-top: 2px solid royalblue;
+    border-left: 2px solid royalblue;
+    border-bottom: 2px solid aqua;
+    border-right: 2px solid aqua;
 }
 
 #rock {

@@ -149,7 +149,7 @@ function game() { // Need to update flex-opp div containing player and computer
                     function startRound() {
                         const nextRound = document.createElement('button');
                         nextRound.textContent = 'START NEXT ROUND';
-                        nextRound.style = 'background: royalblue; color: white; width: 350px; margin-top: 200px';
+                        nextRound.classList.add('play-round');
                         flexbox3.appendChild(nextRound);
             
                         function removeAllButtons() {

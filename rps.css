@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+/* Indie Flower --- paper, handwriting, flowy */
+/* Rammetto One --- rock, blocky and round*/
+/* Londrina Solid --- scissors, sharp and elegant*/
+/* Lilita One --- header font */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
     font-size: 25px;
+    font-family: sans-serif;
 }
 
 body {
@@ -17,16 +28,34 @@ body {
 
 header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: aqua;
-    background: linear-gradient(royalblue, navy);
+    flex-direction: column;
+    background-color: navy;
+    background: linear-gradient( royalblue, navy);
     width: 100vw;
+}
+
+h1 {
     text-align: center;
-    font-family: 'Chilanka';
     font-size: 5vmax;
-    font-weight: bold;
-    padding-top: 3rem;
+    color: transparent;
+    font-family: 'Lilita One';
+    font-weight: normal;
+}
+
+.rock-font {
+    font-family: 'Rammetto One';
+    color: darkgray;
+}
+
+.paper-font {
+    font-family: 'Indie Flower';
+    color: cornsilk;
+}
+
+.scissors-font {
+    font-family: 'Londrina Solid';
+    color: orange;
+    font-weight: normal;
 }
 
 article {
@@ -157,10 +186,16 @@ h2 {
 .button-choice {
     width: 30vmin;
     height: 35vmin;
+    border-color: transparent;
+    background-color: navy;
+}
+
+.button-choice:hover {
+    background-color: black;
 }
 
 button {
-    font-size: 6.5vmin;
+    font-size: 6vmin;
     border-radius: 10px;
     font-weight: bolder;
     transition: 0.5s;
@@ -174,39 +209,105 @@ button:hover {
 }
 
 #rock {
-    background-color: black;
-    background-image: url("Images/rock.jpg");
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: transparent;
-    
-    
+    font-family: 'Rammetto One';
 }
 
 #rock:hover {
-    background-image: none;
     color: gray;
 }
 
+.lump {
+    width: 80%;
+    height: 40%;
+    border-top-left-radius: 45%;
+    border-bottom-left-radius: 35px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 35%;
+    background-color: darkgray;
+    box-shadow: 2vmin 1vmin gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #paper {
-    background-color: black;
-    background-image: url("Images/paper.jpg");
-    background-size: cover;
     color: transparent;
+    font-family: 'Indie Flower';
+    font-weight: normal;
 }
 
 #paper:hover {
-    background-image: none;
-    color: antiquewhite;
+    color: burlywood;
+}
+
+.paper-sheets {
+    width: 75%;
+    height: 80%;
+    margin: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornsilk;
+    border-right: 0.5vmin solid bisque;
+    border-bottom: 0.5vmin solid bisque;
+    box-shadow: 15px 10px cornsilk;
 }
 
 #scissors {
-    background-color: black;
-    background-image: url("Images/scissors.jpg");
-    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: transparent;
+    font-family: 'Londrina Solid';
+    font-weight: 300;
 }
 
 #scissors:hover {
-    background-image: none;
-    color: darkslateblue;
+    color: white;
+}
+
+.scissors-text {
+    position: absolute;
+    z-index: 200;
+}
+
+.half {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+}
+
+.top {
+    rotate: 25deg;
+    
+}
+
+.bottom {
+    rotate: -25deg;
+    margin-top: -65px;
+}
+
+.handle {
+    border: 1.5vmin solid orange;
+    width: 35%;
+    height: 60%;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.blade {
+    background-color: darkgray;
+    width: 75%;
+    height: 25%;
+    border-top-right-radius:50%;
+    border-bottom-right-radius: 50%;
+    margin-left: -10px;
+    align-self: center;
+    padding-left: 20px;
 }

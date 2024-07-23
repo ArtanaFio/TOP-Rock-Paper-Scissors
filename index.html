@@ -4,22 +4,40 @@
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TOP Project: Rock, Paper, Scissors!</title>
         <link rel="stylesheet" href="rps.css">
-        <script src="rock-paper-scissors.js" defer></script>    
+        <script src="rock-paper-scissors.js" defer></script>  
     </head>
 
     <body>
-        <header>Rock, Paper, Scissors:<br>The Game</header>
+        <header>
+            <h1><span class="rock-font">ROCK</span>-<span class="paper-font">PAPER</span>-<span class="scissors-font">SCISSORS</span></h1>
+        </header>
         <article>
             <button type="button" id="start">START</button>
             <div id="win"></div>
             <button type="button" id="playAgain">PLAY AGAIN</button>
             <p class="select-move">Opponents, select your move:</p>
             <p class="choices">
-                <button type="button" class="button-choice" id="rock">Rock</button>
-                <button type="button" class="button-choice" id="paper">Paper</button>
-                <button type="button" class="button-choice" id="scissors">Scissors</button>
+                <button type="button" class="button-choice" id="rock">
+                        <div class="lump">ROCK</div>
+                </button>
+                <button type="button" class="button-choice" id="paper">
+                    <div class="paper-sheets">PAPER</div>
+                </button>
+                <button type="button" class="button-choice" id="scissors">
+                    <div class="scissors-text">SCISSORS</div>
+                    <div class="top half">
+                        <div class="handle"></div>
+                        <div class="blade"></div>
+                    </div>
+                    <div class="bottom half">
+                        <div class="handle"></div>
+                        <div class="blade"></div>
+                    </div>
+                </button>
             </p>
         </article>
+
+        
         <section class="main">
             <div id="flex-opp1">
                 <div class="opponents" id="computer"></div>

@@ -229,6 +229,7 @@ button:hover {
     border-bottom-right-radius: 35%;
     background-color: darkgray;
     box-shadow: 2vmin 1vmin gray;
+    margin-left: -2vmin;
     display: flex;
     justify-content: center;
     align-items: center;

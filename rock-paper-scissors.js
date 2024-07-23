@@ -51,13 +51,19 @@ function game() { // Need to update flex-opp div containing player and computer
             choices.appendChild(paper);
             choices.appendChild(scissors);
         })
-
         
         function getPlayerChoice(event) {
             let button = event.target;
-            return button.id;
+            if (button === rock || rock.contains(button)) {
+                return 'rock';
+            } else if (button === paper || paper.contains(button)) {
+                return 'paper';
+            } else if (button === scissors || scissors.contains(button)) {
+                return 'scissors';
+            } else {
+                alert("still can't read the button");
+            }
         }
-        
 
             buttons.forEach((button) => {
                 button.addEventListener('click', (event) => {
@@ -77,8 +83,10 @@ function game() { // Need to update flex-opp div containing player and computer
                             flexbox2.style = 'background-image: url("Images/rock.jpg"); background-size: cover';
                         } else if (playerSelection === 'paper') {
                             flexbox2.style = 'background-image: url("Images/paper.jpg"); background-size: cover';
-                        } else {
+                        } else if (playerSelection === 'scissors') {
                             flexbox2.style = 'background-image: url("Images/scissors.jpg"); background-size: cover';
+                        } else {
+                            alert("code isn't reading the player's choice");
                         }
                     }
                     playerStyle();
